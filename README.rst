@@ -31,8 +31,8 @@ To submit git pulls, clone the repository and set it up as follows:
 Documentation
 ---------------
 
-See the `Jupyter Notebooks <https://github.com/walchko/opencvutils/docs>`_ for
-examples of how to use this library.
+See the `Jupyter Notebooks <https://github.com/walchko/opencvutils/tree/master/docs>`_
+for examples of how to use this library.
 
 ToDo
 -----

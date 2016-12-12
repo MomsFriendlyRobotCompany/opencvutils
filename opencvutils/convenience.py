@@ -160,9 +160,16 @@ def imshow(images, bgr=True, width=4, titles=None):
 			col = num
 		row = int(ceil(num/col))
 		plt.subplot(row, col, i+1)
-		if bgr:
-			im = opencv2matplotlib(im)
-		plt.imshow(im)
+
+		# plot RGB images
+		if len(im.shape) > 2:
+			if bgr:
+				im = opencv2matplotlib(im)
+			plt.imshow(im)
+		# plot grayscale images
+		else:
+			plt.imshow(im, cmap='gray')
+
 		f = plt.gca()
 		f.axes.get_xaxis().set_visible(False)
 		f.axes.get_yaxis().set_visible(False)
