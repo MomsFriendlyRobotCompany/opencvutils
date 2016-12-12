@@ -3,7 +3,8 @@ OpenCV Utilities
 
 .. image:: https://travis-ci.org/walchko/opencvutils.svg?branch=master
 	:target: https://travis-ci.org/walchko/opencvutils
-.. image:: https://api.codacy.com/project/badge/Grade/a5cff64a1fcc4cf78bac1f936073c01e    :target: https://www.codacy.com/app/kevin-walchko/opencvutils?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=walchko/opencvutils&amp;utm_campaign=Badge_Grade
+.. image:: https://api.codacy.com/project/badge/Grade/a5cff64a1fcc4cf78bac1f936073c01e
+	:target: https://www.codacy.com/app/kevin-walchko/opencvutils?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=walchko/opencvutils&amp;utm_campaign=Badge_Grade
 .. image:: https://img.shields.io/pypi/v/opencvutils.svg
 	:target: https://pypi.python.org/pypi/opencvutils/
 	:alt: Latest Version
