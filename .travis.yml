@@ -16,6 +16,8 @@ addons:
             - python-opencv
             - python-numpy
             - python-scipy
+            - libdc1394-22-dev
+            - libdc1394-utils
 
 # install other libraries using pip
 install:
