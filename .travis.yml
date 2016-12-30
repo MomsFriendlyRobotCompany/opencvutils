@@ -15,7 +15,10 @@ addons:
             - python-opencv
 
 # install other libraries using pip
-install: pip install -U matplotlib nose
+install:
+    - pip install -U pip
+    - pip install .
+    - pip install -U matplotlib nose
 
 # command to run tests
 script: nosetests -v tests/test.py
