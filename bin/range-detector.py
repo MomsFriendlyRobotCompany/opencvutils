@@ -43,7 +43,7 @@ def get_arguments():
         ap.error("Please specify only one image source")
 
     if not args['filter'].upper() in ['RGB', 'HSV']:
-        ap.error("Please speciy a correct filter.")
+        ap.error("Please specify a correct filter.")
 
     return args
 

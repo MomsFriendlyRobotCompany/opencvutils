@@ -6,6 +6,7 @@ from __future__ import print_function
 import cv2
 import re
 
+
 def find_function(name, pretty_print=True, module=None):
 	# if the module is None, initialize it to to the root `cv2`
 	# library
@@ -15,7 +16,7 @@ def find_function(name, pretty_print=True, module=None):
 	# grab all function names that contain `name` from the module
 	p = ".*{}.*".format(name)
 	filtered = filter(lambda x: re.search(p, x, re.IGNORECASE), dir(module))
-	
+
 	# check to see if the filtered names should be returned to the
 	# calling function
 	if not pretty_print:

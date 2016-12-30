@@ -1,6 +1,7 @@
 # import the necessary packages
 import numpy as np
 
+
 def non_max_suppression(boxes, probs=None, overlapThresh=0.3):
 	# if there are no boxes, return an empty list
 	if len(boxes) == 0:

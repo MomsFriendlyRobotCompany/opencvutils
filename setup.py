@@ -21,7 +21,7 @@ setup(
 	long_description=open('README.rst').read(),
 	author_email='kevin.walchko@outlook.com',
 	url='https://github.com/walchko/opencvutils',
-	keywords=['computer vision', 'image processing', 'opencv', 'matplotlib'],
+	keywords=['ipython', 'jupyter', 'notebook', 'computer vision', 'image processing', 'opencv', 'matplotlib'],
 	classifiers=[
 		'Development Status :: 4 - Beta',
 		'Intended Audience :: Developers',
@@ -32,7 +32,7 @@ setup(
 		'Topic :: Software Development :: Libraries :: Python Modules',
 		'Topic :: Software Development :: Libraries :: Application Frameworks'
 	],
-	install_requires=['matplotlib'],
+	install_requires=['matplotlib', 'numpy', 'scipy'],
 	scripts=['bin/range-detector'],
 	license='MIT',
 	cmdclass={

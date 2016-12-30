@@ -2,6 +2,7 @@
 import uuid
 import os
 
+
 class TempFile:
 	def __init__(self, basePath="./", ext=".jpg"):
 		# construct the file path

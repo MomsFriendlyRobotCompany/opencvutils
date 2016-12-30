@@ -4,6 +4,7 @@
 # import the necessary packages
 import cv2
 
+
 def sort_contours(cnts, method="left-to-right"):
 	# initialize the reverse flag and sort index
 	reverse = False

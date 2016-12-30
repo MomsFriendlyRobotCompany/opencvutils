@@ -4,12 +4,14 @@ import base64
 import json
 import sys
 
+
 def base64_encode_image(a):
 	# return a JSON-encoded list of the base64 encoded image, image data
 	# type, and image shape
-	#return json.dumps([base64_encode_array(a), str(a.dtype), a.shape])
+	# return json.dumps([base64_encode_array(a), str(a.dtype), a.shape])
 	return json.dumps([base64_encode_array(a).decode("utf-8"), str(a.dtype),
 		a.shape])
+
 
 def base64_decode_image(a):
 	# grab the array, data type, and shape from the JSON-decoded object
@@ -26,9 +28,11 @@ def base64_decode_image(a):
 	# return the loaded image
 	return a
 
+
 def base64_encode_array(a):
 	# return the base64 encoded array
 	return base64.b64encode(a)
+
 
 def base64_decode_array(a, dtype):
 	# decode and return the array
