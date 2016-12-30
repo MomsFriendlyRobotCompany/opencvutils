@@ -32,7 +32,8 @@ setup(
 		'Topic :: Software Development :: Libraries :: Python Modules',
 		'Topic :: Software Development :: Libraries :: Application Frameworks'
 	],
-	install_requires=['matplotlib', 'numpy', 'scipy'],
+	# install_requires=['matplotlib', 'numpy', 'scipy'],
+	install_requires=['numpy', 'scipy'],
 	scripts=['bin/range-detector'],
 	license='MIT',
 	cmdclass={

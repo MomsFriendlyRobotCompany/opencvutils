@@ -1,6 +1,7 @@
 from IPython.display import HTML
 import matplotlib.pyplot as plt
 from math import ceil
+from opencvutils import opencv2matplotlib
 
 
 def showVideo(filename, width=None):

@@ -11,7 +11,7 @@ from .convenience import auto_canny
 from .convenience import is_cv2
 from .convenience import is_cv3
 from .convenience import get_opencv_version
-from .convenience import imshow
+# from .convenience import imshow
 from .meta import find_function
 import contours
 import paths
