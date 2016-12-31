@@ -1,4 +1,4 @@
-__version__ = '0.5.1'
+__version__ = '0.5.6'
 
 # import the necessary packages
 from .convenience import translate
@@ -15,3 +15,5 @@ from .convenience import get_opencv_version
 from .meta import find_function
 import contours
 import paths
+import video
+import io

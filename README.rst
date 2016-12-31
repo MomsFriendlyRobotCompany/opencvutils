@@ -29,6 +29,10 @@ Install
 
 	pip install opencvutils
 
+For ``scipy`` on the RPi also do: ``sudo apt-get install libopenblas-dev libatlas-dev libblas-dev liblapack-dev gfortran``.
+Unfortunately this is not fast, ``numpy`` install involves compiling things, so
+go grab a coffee or something while you wait.
+
 Development
 ------------
 
@@ -59,6 +63,7 @@ Change Log
 -------------
 
 ========== ======= =============================
+2016-12-30 0.5.3   typo fix
 2016-12-30 0.5.1   refactored
 2016-12-11 0.5.0   published to PyPi
 ========== ======= =============================

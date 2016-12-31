@@ -8,6 +8,7 @@ from setuptools.command.test import test as TestCommand
 class PublishCommand(TestCommand):
 	def run_tests(self):
 		print('Publishing to PyPi ...')
+		os.system("python setup.py sdist")
 		os.system("python setup.py bdist_wheel")
 		os.system("twine upload dist/opencvutils-{}*.whl".format(VERSION))
 
@@ -15,6 +16,7 @@ class PublishCommand(TestCommand):
 setup(
 	name='opencvutils',
 	# packages=['imutils', 'imutils.video', 'imutils.io'],
+	packages=['opencvutils', 'opencvutils.video', 'opencvutils.io'],
 	version=VERSION,
 	description='A series of convenience functions to make basic image processing functions such as translation, rotation, resizing, skeletonization, displaying Matplotlib images, sorting contours, detecting edges, and much more easier with OpenCV and both Python 2.7 and Python 3.',
 	author='Kevin Walchko',
@@ -34,7 +36,7 @@ setup(
 	],
 	# install_requires=['matplotlib', 'numpy', 'scipy'],
 	install_requires=['numpy', 'scipy'],
-	scripts=['bin/range-detector'],
+	scripts=['bin/range-detector.py'],
 	license='MIT',
 	cmdclass={
 		# 'test': NoseTestCommand,
