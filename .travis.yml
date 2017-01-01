@@ -17,10 +17,11 @@ addons:
         packages:
             # - libopencv-dev
             # - python-opencv
-            # - python-numpy
+            - python-numpy
             # - python-scipy
             # - libdc1394-22-dev
             # - libdc1394-utils
+            - python-yaml
             - build-essential
             - cmake
             - libgtk2.0-dev
@@ -47,7 +48,7 @@ before_install:
 
 # install other libraries using pip
 install:
-    - pip install -U pip setuptools wheel PyYaml
+    - pip install -U pip setuptools wheel
     - pip install .
     # - pip install -U matplotlib nose
 
