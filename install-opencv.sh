@@ -12,9 +12,12 @@ ls -alh
 mv 3.2.0.tar.gz opencv-3.2.0.tar.gz
 tar -xzf opencv-3.2.0.tar.gz
 mkdir opencv-3.2.0/build
-cd opencv-3.2.0/build && cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=$HOME .. && make -j7 && make install
+cd opencv-3.2.0/build && cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=$HOME/save .. && make -j7 && make install
 # ldconfig
 
-ls -alhR
+cd $HOME
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib
+ls -alh -R $HOME/save
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/save/lib
+export PYTHONPATH=$PYTHONPATH:$HOME/save/lib/

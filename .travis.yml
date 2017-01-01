@@ -41,7 +41,7 @@ addons:
 
 cache:
     directories:
-        - opencv-3.2.0
+        - $HOME/save
 
 before_install:
     - ./install-opencv.sh
