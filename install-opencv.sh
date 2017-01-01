@@ -19,5 +19,7 @@ set -ex
 
 ls -alhR $HOME/save
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/save/lib
-export PYTHONPATH=$PYTHONPATH:$HOME/save/lib:$HOME/save/lib/python2.7:$HOME/save/lib/python2.7/site-packages
+env
+
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/save/lib
+# export PYTHONPATH=$PYTHONPATH:$HOME/save/lib:$HOME/save/lib/python2.7:$HOME/save/lib/python2.7/site-packages
