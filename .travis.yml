@@ -15,12 +15,28 @@ env:
 addons:
     apt:
         packages:
-            - libopencv-dev
-            - python-opencv
-            - python-numpy
+            # - libopencv-dev
+            # - python-opencv
+            # - python-numpy
             # - python-scipy
             # - libdc1394-22-dev
             # - libdc1394-utils
+            - build-essential
+            - cmake
+            - libgtk2.0-dev
+            - pkg-config
+            - libavcodec-dev
+            - libavformat-dev
+            - libswscale-dev
+            - python-dev
+            - python-numpy
+            - libtbb2
+            - libtbb-dev
+            - libjpeg-dev
+            - libpng-dev
+            - libtiff-dev
+            - libjasper-dev
+            - ffmpeg
 
 cache:
     directories:
