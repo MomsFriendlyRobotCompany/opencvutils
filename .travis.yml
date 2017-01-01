@@ -7,6 +7,9 @@ python:
     - "2.7_with_system_site_packages"
     # - "2.7"
 
+env:
+    - TRAVISCI=1
+
 # command to install dependencies that require sudo
 # https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
 addons:
