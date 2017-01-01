@@ -16,3 +16,5 @@ cd opencv-3.2.0/build && cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREF
 # ldconfig
 
 ls -alhR
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib

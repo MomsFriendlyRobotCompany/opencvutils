@@ -49,7 +49,7 @@ before_install:
 # install other libraries using pip
 install:
     - pip install -U pip setuptools wheel
-    - pip install .
+    # - pip install .
     # - pip install -U matplotlib nose
 
 # command to run tests
