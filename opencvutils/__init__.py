@@ -1,3 +1,7 @@
+__version__ = '0.5.1'
+__license__ = 'MIT'
+__copyright__ = 'Copyright (c) 2016 Kevin Walchko'
+__author__ = 'Kevin J. Walchko'
 __version__ = '0.5.7'
 
 # import the necessary packages
@@ -14,6 +18,8 @@ from .convenience import get_opencv_version
 # from .convenience import imshow
 from .meta import find_function
 import contours
+# from paths import list_images, list_files
 import paths
 import video
 import io
+from object_detection import non_max_suppression
