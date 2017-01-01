@@ -1,14 +1,20 @@
 # import the necessary packages
-import uuid
-import os
+# import uuid
+# import os
+import tempfile
 
 
 class TempFile:
 	def __init__(self, basePath="./", ext=".jpg"):
 		# construct the file path
-		self.path = "{base_path}/{rand}{ext}".format(base_path=basePath, rand=str(uuid.uuid4()),
-			ext=ext)
+		self.temp = tempfile.NamedTemporaryFile(dir=basePath, suffix=ext)
 
-	def cleanup(self):
+	def __del__(self):
+		self.close()
+
+	def get(self):
+		return self.temp
+
+	def close(self):
 		# remove the file
-		os.remove(self.path)
+		self.temp.close()

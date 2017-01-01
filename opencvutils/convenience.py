@@ -6,10 +6,11 @@ import numpy as np
 import cv2
 import sys
 
-try:
-	cv2.IMREAD_COLOR
-except:
-	cv2.IMREAD_COLOR = 1
+# no cv 3
+# try:
+# 	cv2.IMREAD_COLOR
+# except:
+# 	cv2.IMREAD_COLOR = 1
 
 # import any special Python 2.7 packages
 if sys.version_info.major == 2:
@@ -116,7 +117,8 @@ def opencv2matplotlib(image):
 	return cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 
-def url_to_image(url, readFlag=cv2.IMREAD_COLOR):
+# def url_to_image(url, readFlag=cv2.IMREAD_COLOR):
+def url_to_image(url, readFlag=1):
 	# download the image, convert it to a NumPy array, and then read
 	# it into OpenCV format
 	resp = urlopen(url)

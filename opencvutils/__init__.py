@@ -2,7 +2,7 @@ __version__ = '0.5.1'
 __license__ = 'MIT'
 __copyright__ = 'Copyright (c) 2016 Kevin Walchko'
 __author__ = 'Kevin J. Walchko'
-__version__ = '0.5.7'
+__version__ = '0.5.8'
 
 # import the necessary packages
 from .convenience import translate
