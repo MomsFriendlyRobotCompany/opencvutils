@@ -35,8 +35,9 @@ setup(
 		'Topic :: Software Development :: Libraries :: Application Frameworks'
 	],
 	# install_requires=['matplotlib', 'numpy', 'scipy'],
-	install_requires=['numpy', 'scipy'],
-	scripts=['bin/range-detector.py'],
+	# install_requires=['numpy', 'scipy'],
+	install_requires=['numpy'],
+	# scripts=['bin/range-detector.py'],
 	license='MIT',
 	cmdclass={
 		# 'test': NoseTestCommand,

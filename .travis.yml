@@ -15,15 +15,15 @@ addons:
             - libopencv-dev
             - python-opencv
             - python-numpy
-            - python-scipy
-            - libdc1394-22-dev
-            - libdc1394-utils
+            # - python-scipy
+            # - libdc1394-22-dev
+            # - libdc1394-utils
 
 # install other libraries using pip
 install:
     - pip install -U pip setuptools wheel
     - pip install .
-    - pip install -U matplotlib nose
+    # - pip install -U matplotlib nose
 
 # command to run tests
 script: nosetests -v tests/test.py
