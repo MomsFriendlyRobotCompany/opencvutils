@@ -22,6 +22,9 @@ addons:
             # - libdc1394-22-dev
             # - libdc1394-utils
 
+before_install:
+    - ./install-opencv.sh
+
 # install other libraries using pip
 install:
     - pip install -U pip setuptools wheel PyYaml
