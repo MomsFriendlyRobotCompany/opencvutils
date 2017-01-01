@@ -14,8 +14,8 @@ def test_dummy():
 	assert True
 
 
-def test_tempfile():
-	t = TempFile(ext='.png')
-	# f = t.get()
-	t.close()
-	assert True
+# def test_tempfile():
+# 	t = TempFile(ext='.png')
+# 	# f = t.get()
+# 	t.close()
+# 	assert True
