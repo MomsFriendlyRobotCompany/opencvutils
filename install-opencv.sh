@@ -3,8 +3,8 @@
 set -ex
 
 ls -alh
-ls opencv-3.2.0 -alh
-ls opencv-3.2.0/build -alh
+# ls opencv-3.2.0 -alh
+# ls opencv-3.2.0/build -alh
 
 wget https://github.com/opencv/opencv/archive/3.2.0.tar.gz
 
