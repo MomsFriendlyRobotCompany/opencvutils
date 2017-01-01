@@ -24,7 +24,7 @@ addons:
 
 # install other libraries using pip
 install:
-    - pip install -U pip setuptools wheel
+    - pip install -U pip setuptools wheel PyYaml
     - pip install .
     # - pip install -U matplotlib nose
 
