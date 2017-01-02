@@ -8,9 +8,10 @@ python:
     # - "2.7"
 
 env:
-    - TRAVISCI=1
-    - LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/save/lib
-    - PYTHONPATH=$PYTHONPATH:$HOME/save/lib:$HOME/save/lib/python2.7:$HOME/save/lib/python2.7/site-packages
+    global:
+        - TRAVISCI=1
+        - LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/save/lib
+        - PYTHONPATH=$PYTHONPATH:$HOME/save/lib:$HOME/save/lib/python2.7:$HOME/save/lib/python2.7/site-packages
 
 # command to install dependencies that require sudo
 # https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
