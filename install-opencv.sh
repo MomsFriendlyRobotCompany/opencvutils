@@ -8,7 +8,7 @@ env
 # # ls opencv-3.2.0 -alh
 # # ls opencv-3.2.0/build -alh
 #
-if [true]
+if [ true ]
 then
 	wget https://github.com/opencv/opencv/archive/3.2.0.tar.gz
 
@@ -17,7 +17,7 @@ then
 	tar -xzf opencv-3.2.0.tar.gz
 	mkdir opencv-3.2.0/build
 	cd opencv-3.2.0/build && cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=$HOME/.local .. && make -j7 && make install
-elif [true]
+elif [ false ]
 then
 	ls -aR $HOME/.local
 	pip install -U --user pyserial
