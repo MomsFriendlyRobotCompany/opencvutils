@@ -18,7 +18,7 @@ set -ex
 # cd $HOME
 
 # cp $HOME/save $HOME/.local
-pip install -U --user psutils
+pip install -U --user pyserial
 ls -alhR $HOME/.local
 
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/save/lib
