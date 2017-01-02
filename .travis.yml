@@ -54,6 +54,7 @@ install:
     # - pip install .
     # - pip install -U matplotlib nose
 
+
 # command to run tests
 # script: nosetests -v tests/test.py
 script: true
