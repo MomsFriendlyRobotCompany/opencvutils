@@ -8,7 +8,7 @@ env
 # # ls opencv-3.2.0 -alh
 # # ls opencv-3.2.0/build -alh
 #
-if [false]
+if [true]
 then
 	wget https://github.com/opencv/opencv/archive/3.2.0.tar.gz
 
