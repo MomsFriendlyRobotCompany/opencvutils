@@ -17,7 +17,9 @@ set -ex
 #
 # cd $HOME
 
-ls -alhR $HOME
+cp $HOME/save $HOME/.local
+pip install -U --user psutils
+ls -alhR $HOME/.local
 
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/save/lib
 # export PYTHONPATH=$PYTHONPATH:$HOME/save/lib:$HOME/save/lib/python2.7:$HOME/save/lib/python2.7/site-packages
