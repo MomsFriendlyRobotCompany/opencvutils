@@ -17,7 +17,7 @@ set -ex
 #
 # cd $HOME
 
-cp $HOME/save $HOME/.local
+# cp $HOME/save $HOME/.local
 pip install -U --user psutils
 ls -alhR $HOME/.local
 
