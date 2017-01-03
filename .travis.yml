@@ -41,12 +41,12 @@ addons:
             - libjasper-dev
             - ffmpeg
 
-cache:
-    directories:
-        - $HOME/.local
-
-before_install:
-    - ./install-opencv.sh
+# cache:
+#     directories:
+#         - $HOME/.local
+#
+# before_install:
+#     - ./install-opencv.sh
 
 # install other libraries using pip
 install:

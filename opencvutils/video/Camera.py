@@ -238,7 +238,7 @@ class Camera(object):
 		if self.gray and ret:
 			img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-		return True, img
+		return ret, img
 
 	def isOpen(self):
 		"""

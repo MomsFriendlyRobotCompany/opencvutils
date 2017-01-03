@@ -8,7 +8,7 @@ env
 # # ls opencv-3.2.0 -alh
 # # ls opencv-3.2.0/build -alh
 #
-if [ true ]
+if [ false ]
 then
 	wget https://github.com/opencv/opencv/archive/3.2.0.tar.gz
 
@@ -22,7 +22,8 @@ then
 	ls -aR $HOME/.local
 	pip install -U --user pyserial
 else
-	ls -aR $HOME/.local
+	# ls -aR $HOME/.local
+	echo 'hello'
 fi
 # # ldconfig
 #
