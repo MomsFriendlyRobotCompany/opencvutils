@@ -4,9 +4,9 @@
 # import tempfile
 
 
-class TempFile:
-	def __init__(self, basePath="./", ext=".jpg"):
-		pass
+# class TempFile:
+# 	def __init__(self, basePath="./", ext=".jpg"):
+# 		pass
 		# construct the file path
 	# 	self.temp = tempfile.NamedTemporaryFile(dir=basePath, suffix=ext)
 	#
