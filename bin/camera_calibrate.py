@@ -21,6 +21,7 @@ import cv2
 import glob
 # import yaml
 import argparse
+from opencvutils import __version__ as VERSION
 
 
 # class CameraCalibration(object):
@@ -145,7 +146,7 @@ import argparse
 
 # set up and handle command line args
 def handleArgs():
-	parser = argparse.ArgumentParser('A simple program to calibrate a camera')
+	parser = argparse.ArgumentParser(version=VERSION, description='A simple program to calibrate a camera')
 	parser.add_argument('-m', '--matrix', help='save calibration values', default='calibration.npy')
 	parser.add_argument('-t', '--target', help='target type: chessboard or circles', default='chessboard')
 	parser.add_argument('-s', '--target_size', type=int, nargs=2, help='size of pattern, for example, (6,7)', default=(11, 4))

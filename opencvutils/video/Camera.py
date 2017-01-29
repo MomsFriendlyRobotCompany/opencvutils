@@ -56,8 +56,9 @@ class SaveVideo(object):
 	def __init__(self):
 		self.out = None
 
-	def start(self, filename, image_size, fps=20):
-		mpg4 = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
+	def start(self, filename, image_size, fps=30):
+		# mpg4 = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')  # faster?
+		mpg4 = cv2.VideoWriter_fourcc('x', '2', '6', '4')  # better quality?
 		self.out = cv2.VideoWriter()
 		self.out.open(filename, mpg4, fps, image_size)
 

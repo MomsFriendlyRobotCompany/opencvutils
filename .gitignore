@@ -9,3 +9,5 @@ old/
 dist
 build
 .ipynb_checkpoints
+*.mp4
+*.m4v
