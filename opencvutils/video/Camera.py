@@ -95,6 +95,9 @@ class CameraPi(object):
 		self.camera.close()
 		print('exiting CameraPi ... bye!')
 
+	def close(self):
+		self.camera.close()
+
 	def init(self, win, cameraNumber, fileName, calibration):
 		# self.camera.vflip = True  # camera is mounted upside down
 		self.camera.resolution = win
@@ -133,8 +136,11 @@ class CameraCV(object):
 		self.camera = cv2.VideoCapture()
 
 	def __del__(self):
-		self.camera.release()
+		self.close()
 		print('exiting CameraCV ... bye!')
+
+	def close(self):
+		self.camera.release()
 
 	def init(self, win, cameraNumber, fileName, calibration):
 		print('win', win)
@@ -223,6 +229,9 @@ class Camera(object):
 		out: None
 		"""
 		self.camera.init(win=win, cameraNumber=cameraNumber, fileName=fileName, calibration=calibration)
+
+	def close(self):
+		self.camera.close()
 
 	def read(self):
 		"""
