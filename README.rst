@@ -63,6 +63,7 @@ Change Log
 -------------
 
 ========== ======= =============================
+2017-01-29 0.6.0   added video capture (video and images) program
 2016-12-30 0.5.3   typo fix
 2016-12-30 0.5.1   refactored
 2016-12-11 0.5.0   published to PyPi

@@ -7,6 +7,7 @@ import time
 import argparse
 from opencvutils.video import Camera
 import socket as Socket
+from opencvutils import __version__ as VERSION
 # import errno
 
 # threaded version
@@ -127,7 +128,7 @@ class mjpgServer(BaseHTTPRequestHandler):
 
 
 def handleArgs():
-	parser = argparse.ArgumentParser(description='A simple mjpeg server Example: mjpeg-server -p 8080 --camera 4')
+	parser = argparse.ArgumentParser(version=VERSION, description='A simple mjpeg server Example: mjpeg-server -p 8080 --camera 4')
 	parser.add_argument('-p', '--port', help='mjpeg publisher port, default is 9000', type=int, default=9000)
 	parser.add_argument('-c', '--camera', help='set opencv camera number, ex. -c 1', type=int, default=0)
 	parser.add_argument('-t', '--type', help='set camera type, either pi or cv, ex. -t pi', default='cv')

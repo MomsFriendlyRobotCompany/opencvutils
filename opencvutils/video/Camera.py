@@ -56,8 +56,9 @@ class SaveVideo(object):
 	def __init__(self):
 		self.out = None
 
-	def start(self, filename, image_size, fps=20):
-		mpg4 = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
+	def start(self, filename, image_size, fps=30):
+		# mpg4 = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')  # faster?
+		mpg4 = cv2.VideoWriter_fourcc('x', '2', '6', '4')  # better quality?
 		self.out = cv2.VideoWriter()
 		self.out.open(filename, mpg4, fps, image_size)
 
@@ -72,11 +73,11 @@ class SaveVideo(object):
 			self.out.release()
 
 
-class VideoPublisher(object):
-	"""
-	"""
-	def __init__(self):
-		pass
+# class VideoPublisher(object):
+# 	"""
+# 	"""
+# 	def __init__(self):
+# 		pass
 
 
 CAMERA_PI = 0
@@ -92,6 +93,9 @@ class CameraPi(object):
 
 	def __del__(self):
 		# the red light should shut off
+		self.close()
+
+	def close(self):
 		self.camera.close()
 		print('exiting CameraPi ... bye!')
 
@@ -120,13 +124,13 @@ class CameraPi(object):
 	def type(self):
 		return self.ctype
 
-	def get(self, display=True):
-		if display:
-			print('-----------------')
-			print('Pi Camera')
-			print('-----------------')
-
-		return {'type': 'PiCamera'}
+	# def get(self, display=True):
+	# 	if display:
+	# 		print('-----------------')
+	# 		print('Pi Camera')
+	# 		print('-----------------')
+	#
+	# 	return {'type': 'PiCamera'}
 
 
 class CameraCV(object):
@@ -137,13 +141,16 @@ class CameraCV(object):
 
 	def __del__(self):
 		self.close()
-		print('exiting CameraCV ... bye!')
 
 	def close(self):
 		self.camera.release()
+		print('exiting CameraCV ... bye!')
+
+	# def close(self):
+	# 	self.camera.release()
 
 	def init(self, win, cameraNumber, fileName, calibration):
-		print('win', win)
+		# print('win', win)
 		if (cameraNumber or cameraNumber == 0) and not fileName:
 			live = True
 			port = cameraNumber
@@ -157,7 +164,7 @@ class CameraCV(object):
 		time.sleep(1)  # let camera warm-up
 
 		if live:
-			print('setting win size to:', win)
+			# print('setting win size to:', win)
 			self.camera.set(3, win[0])
 			self.camera.set(4, win[1])
 
@@ -177,13 +184,13 @@ class CameraCV(object):
 	def type(self):
 		return self.ctype
 
-	def get(self, display=True):
-		if display:
-			print('-----------------')
-			print('OpenCV Camera')
-			print('-----------------')
-
-		return {'type': 'OpenCV', 'number': 0, 'size': (0, 0)}
+	# def get(self, display=True):
+	# 	if display:
+	# 		print('-----------------')
+	# 		print('OpenCV Camera')
+	# 		print('-----------------')
+	#
+	# 	return {'type': 'OpenCV', 'number': 0, 'size': (0, 0)}
 
 
 class Camera(object):
@@ -220,7 +227,13 @@ class Camera(object):
 		else:
 			raise VideoError('Error, {0!s} not supported'.format((cam)))
 
-		print('[+] Camera type {}'.format(self.camera.type()))
+		# print('[+] Camera type {}'.format(self.camera.type()))
+
+	def __del__(self):
+		self.close()
+
+	def close(self):
+		self.camera.close()
 
 	def init(self, win=(640, 480), cameraNumber=None, fileName=None, calibration=None):
 		"""
@@ -247,7 +260,7 @@ class Camera(object):
 		if self.gray and ret:
 			img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-		return True, img
+		return ret, img
 
 	def isOpen(self):
 		"""
