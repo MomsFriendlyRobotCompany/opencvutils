@@ -84,6 +84,12 @@ CAMERA_PI = 0
 CAMERA_CV = 1
 CAMERA_VIDEO = 2  # useful??
 
+kind = {
+	0: 'pi',
+	1: 'cv',
+	2: 'video'
+}
+
 
 class CameraPi(object):
 	ctype = CAMERA_PI
