@@ -143,7 +143,7 @@ class CameraCV(object):
 		self.camera.release()
 		print('exiting CameraCV ... bye!')
 
-	def init(self, win, cameraNumber, fileName, calibration):
+	def init(self, win=None, cameraNumber=None, fileName=None, calibration=None):
 		# print('win', win)
 		if (cameraNumber or cameraNumber == 0) and not fileName:
 			live = True
