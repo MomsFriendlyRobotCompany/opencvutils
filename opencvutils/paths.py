@@ -38,8 +38,7 @@ def list_files(basePath, validExts=(".jpg", ".jpeg", ".png", ".bmp"), contains=N
 				yield imagePath
 
 
-# def url_to_image(url, readFlag=cv2.IMREAD_COLOR):
-def url_to_image(url, readFlag=1):
+def url_to_image(url, readFlag=cv2.IMREAD_COLOR):
 	# download the image, convert it to a NumPy array, and then read
 	# it into OpenCV format
 	resp = urlopen(url)
