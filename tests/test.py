@@ -1,8 +1,13 @@
 #!/usr/bin/env python
 
-# import opencvutils as cvu
-# from opencvutils.video import Camera
-# from opencvutils.io import TempFile
+import opencvutils as cvu
+# from opencvutils import Camera
+
+
+def test_version():
+	assert cvu.is_cv2() is False
+	assert cvu.is_cv3() is True
+	assert cvu.get_opencv_version() == (3, 2, 0)
 
 
 def test_dummy():
