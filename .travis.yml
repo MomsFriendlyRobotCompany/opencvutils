@@ -37,6 +37,7 @@ addons:
             - libtiff-dev
             - libjasper-dev
             - ffmpeg
+            - python-matplotlib
 
 cache:
     directories:
