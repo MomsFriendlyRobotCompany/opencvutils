@@ -9,11 +9,6 @@ python:
     - "2.7_with_system_site_packages"
     # - "2.7"
 
-# env:
-#     global:
-#         - LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib
-        # - PYTHONPATH=$PYTHONPATH:$HOME/save/lib:$HOME/save/lib/python2.7:$HOME/save/lib/python2.7/site-packages
-
 # command to install dependencies that require sudo
 # https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
 addons:
@@ -59,10 +54,10 @@ env:
 install:
     - ./install-opencv.sh
     - pip install -U --user pip setuptools wheel
-    # - pip install .
+    - pip install .
     # - pip install -U matplotlib nose
 
 
 # command to run tests
-script: nosetests -v tests/test.py
+script: nosetests -v -w tests test.py
 # script: true
