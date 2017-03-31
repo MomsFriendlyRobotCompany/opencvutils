@@ -1,4 +1,3 @@
-# import the necessary packages
 import os
 import numpy as np
 import cv2

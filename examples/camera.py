@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import cv2
-from opencvutils.video import Camera
+from opencvutils import Camera
 
 
 cam = Camera()

@@ -5,7 +5,7 @@ import cv2
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import time
 import argparse
-from opencvutils.video import Camera
+from opencvutils import Camera
 import socket as Socket
 from opencvutils import __version__ as VERSION
 # import errno
@@ -157,19 +157,6 @@ def main():
 		print 'KeyboardInterrupt'
 
 	server.socket.close()
-
-	# except Exception as e:
-	# 	print 'Error', e
-	# 	server.socket.close()
-	#
-	# except Socket.error as e:
-	# 	if e.errno == errno.EPIPE:
-	# 		print 'broken pipe?'
-	# 	else:
-	# 		print 'some other socket error'
-	#
-	# except:
-	# 	print 'crap something happened'
 
 
 if __name__ == '__main__':

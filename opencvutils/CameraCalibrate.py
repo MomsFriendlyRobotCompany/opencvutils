@@ -12,8 +12,8 @@ class CameraCalibration(object):
 	marker_checkerboard = True
 	marker_size = None
 
-	def __init__(self):
-		pass
+	def __init__(self, show_markers=True):
+		self.show_markers = show_markers
 
 	# # write camera calibration file out
 	def save(self, save_file):
@@ -75,6 +75,8 @@ class CameraCalibration(object):
 
 	# draw the detected corners on the image for display
 	def draw(self, image, corners):
+		if not self.show_markers:
+			return image
 		# Draw and display the corners
 		if corners is not None:
 			cv2.drawChessboardCorners(image, self.marker_size, corners, True)

@@ -2,7 +2,7 @@
 #
 # Author: Kevin J. Walchko
 # Date: 11 May 2014
-# Version: 0.2
+# Version: 0.3
 # -------------------------------
 #
 #
@@ -11,8 +11,8 @@
 import cv2
 import yaml
 import argparse
-from opencvutils.video.Camera import Camera
-from opencvutils.video.Camera import SaveVideo
+from opencvutils import Camera
+from opencvutils import SaveVideo
 from opencvutils import __version__ as VERSION
 from time import sleep
 
