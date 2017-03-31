@@ -30,7 +30,6 @@ addons:
             - libswscale-dev
             - python-dev
             - python-numpy
-            # - libtbb2
             - libtbb-dev
             - libjpeg-dev
             - libpng-dev
