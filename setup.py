@@ -15,8 +15,7 @@ class PublishCommand(TestCommand):
 
 setup(
 	name='opencvutils',
-	# packages=['imutils', 'imutils.video', 'imutils.io'],
-	packages=['opencvutils', 'opencvutils.video', 'opencvutils.io'],
+	packages=['opencvutils'],
 	version=VERSION,
 	description='A series of convenience functions to make basic image processing functions such as translation, rotation, resizing, skeletonization, displaying Matplotlib images, sorting contours, detecting edges, and much more easier with OpenCV and both Python 2.7 and Python 3.',
 	author='Kevin Walchko',
@@ -36,9 +35,10 @@ setup(
 	],
 	# install_requires=['matplotlib', 'numpy', 'scipy'],
 	# install_requires=['numpy', 'scipy'],
-	install_requires=['numpy', 'pyyaml'],
+	# install_requires=['numpy', 'pyyaml'],
+	install_requires=['numpy'],
 	# scripts=['bin/range-detector.py'],
-	scripts=['bin/camera_calibrate.py', 'bin/mjpeg_server.py'],
+	scripts=['bin/camera_calibrate.py', 'bin/mjpeg_server.py', 'bin/video_capture.py'],
 	license='MIT',
 	cmdclass={
 		# 'test': NoseTestCommand,

@@ -1,22 +1,6 @@
-# author:    Adrian Rosebrock
-# website:   http://www.pyimagesearch.com
-
 # import the necessary packages
 import numpy as np
 import cv2
-import sys
-import matplotlib.pyplot as plt
-from math import ceil
-# from opencvutils import opencv2matplotlib
-
-
-# import any special Python 2.7 packages
-if sys.version_info.major == 2:
-	from urllib import urlopen
-
-# import any special Python 3 packages
-elif sys.version_info.major == 3:
-	from urllib.request import urlopen
 
 
 def translate(image, x, y):
@@ -108,25 +92,6 @@ def skeletonize(image, size, structuring=cv2.MORPH_RECT):
 	return skeleton
 
 
-def opencv2matplotlib(image):
-	# OpenCV represents images in BGR order; however, Matplotlib
-	# expects the image in RGB order, so simply convert from BGR
-	# to RGB and return
-	return cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-
-
-# def url_to_image(url, readFlag=cv2.IMREAD_COLOR):
-def url_to_image(url, readFlag=1):
-	# download the image, convert it to a NumPy array, and then read
-	# it into OpenCV format
-	resp = urlopen(url)
-	image = np.asarray(bytearray(resp.read()), dtype="uint8")
-	image = cv2.imdecode(image, readFlag)
-
-	# return the image
-	return image
-
-
 def auto_canny(image, sigma=0.33):
 	# compute the median of the single channel pixel intensities
 	v = np.median(image)
@@ -138,77 +103,3 @@ def auto_canny(image, sigma=0.33):
 
 	# return the edged image
 	return edged
-
-
-def is_cv2():
-	# if we are using OpenCV 2, then our cv2.__version__ will start
-	# with '2.'
-	return True if get_opencv_version()[0] == '2' else False
-
-
-def is_cv3():
-	# if we are using OpenCV 3.X, then our cv2.__version__ will start
-	# with '3.'
-	return True if get_opencv_version()[0] == '3' else False
-
-
-def get_opencv_version():
-	return cv2.__version__.split('.')
-
-
-def imshow(images, bgr=True, width=4, titles=None, figsize=None, showaxes=False):
-	"""
-	Make an array of plots.
-
-	exmaple:
-		imshow([im1,im2], bgr=True, width=1, titles=['one', 'two'], figsize=(4,2), showaxes=True)
-
-	params:
-		images - array of images
-		bgr - if a color image, assume it is opencv and switch it rgb format
-		width - how many images wide
-		figsize - a tuple (width,height) of how wide the figure should be in inches (this is depended on your dpi setting)
-		titles - an array of titles for each subplot
-		showaxes - True/False to show axes
-	"""
-	# edit the size of the figures
-	if figsize:
-		fs = figsize
-		plt.figure(figsize=fs)
-	else:
-		plt.figure()
-
-	# figure out the number of subplots
-	num = len(images)
-	if num > width:
-		col = width
-	else:
-		col = num
-	row = int(ceil(num/col))
-
-	# draw the plots
-	for i, im in enumerate(images):
-		plt.subplot(row, col, i+1)
-
-		# plot RGB images
-		if len(im.shape) > 2:
-			if bgr:
-				im = opencv2matplotlib(im)
-			plt.imshow(im)
-		# plot grayscale images
-		else:
-			plt.imshow(im, cmap='gray')
-
-		# do we want axes?
-		if showaxes:
-			pass
-		else:
-			plt.xticks(())
-			plt.yticks(())
-
-		# do we want titles?
-		if titles:
-			plt.title(titles[i])
-
-	# clean up and make pretty
-	plt.tight_layout()

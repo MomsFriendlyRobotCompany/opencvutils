@@ -1,5 +1,16 @@
 # import the necessary packages
 import os
+import numpy as np
+import cv2
+import sys
+
+# import any special Python 2.7 packages
+if sys.version_info.major == 2:
+	from urllib import urlopen
+
+# import any special Python 3 packages
+elif sys.version_info.major == 3:
+	from urllib.request import urlopen
 
 
 def list_images(basePath, contains=None):
@@ -25,3 +36,15 @@ def list_files(basePath, validExts=(".jpg", ".jpeg", ".png", ".bmp"), contains=N
 				# construct the path to the image and yield it
 				imagePath = os.path.join(rootDir, filename).replace(" ", "\\ ")
 				yield imagePath
+
+
+# def url_to_image(url, readFlag=cv2.IMREAD_COLOR):
+def url_to_image(url, readFlag=1):
+	# download the image, convert it to a NumPy array, and then read
+	# it into OpenCV format
+	resp = urlopen(url)
+	image = np.asarray(bytearray(resp.read()), dtype="uint8")
+	image = cv2.imdecode(image, readFlag)
+
+	# return the image
+	return image

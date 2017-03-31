@@ -29,16 +29,20 @@ Install
 
 	pip install opencvutils
 
-For ``scipy`` on the RPi also do: ``sudo apt-get install libopenblas-dev libatlas-dev libblas-dev liblapack-dev gfortran``.
+Other Libraries
+~~~~~~~~~~~~~~~~~
+
+For ``scipy`` on the RPi also do::
+
+	sudo apt-get install libopenblas-dev libatlas-dev libblas-dev liblapack-dev gfortran
+
 Unfortunately this is not fast, ``numpy`` install involves compiling things, so
 go grab a coffee or something while you wait.
 
 Development
 ------------
 
-To submit git pulls, clone the repository and set it up as follows:
-
-::
+To submit git pulls, clone the repository and set it up as follows::
 
 	git clone https://github.com/walchko/opencvutils
 	cd opencvutils
@@ -53,9 +57,6 @@ for examples of how to use this library.
 ToDo
 -----
 
-* add camera class
-* add calibration
-* add mjpeg streamer
 * histogram matching
 * document everything
 
@@ -63,6 +64,7 @@ Change Log
 -------------
 
 ========== ======= =============================
+2017-03-31 0.7.0   refactored and got rid of things I don't need
 2017-01-29 0.6.0   added video capture (video and images) program
 2016-12-30 0.5.3   typo fix
 2016-12-30 0.5.1   refactored

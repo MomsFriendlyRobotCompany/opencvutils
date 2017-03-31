@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -ex
 
@@ -8,22 +8,24 @@ env
 # # ls opencv-3.2.0 -alh
 # # ls opencv-3.2.0/build -alh
 #
-if [ false ]
-then
-	wget https://github.com/opencv/opencv/archive/3.2.0.tar.gz
+# OPENCV_VERSION=3.2.0
 
-	ls -alh
-	mv 3.2.0.tar.gz opencv-3.2.0.tar.gz
-	tar -xzf opencv-3.2.0.tar.gz
-	mkdir opencv-3.2.0/build
-	cd opencv-3.2.0/build && cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=$HOME/.local .. && make -j7 && make install
-elif [ false ]
-then
-	ls -aR $HOME/.local
-	pip install -U --user pyserial
+if [  ! -d "$OPENCV_INSTALL_DIR/lib"  ];then
+	wget https://github.com/opencv/opencv/archive/$OPENCV_VERSION.tar.gz
+
+	# ls -alh
+	mv $OPENCV_VERSION.tar.gz opencv-$OPENCV_VERSION.tar.gz
+	tar -xzf opencv-$OPENCV_VERSION.tar.gz
+	mkdir opencv-$OPENCV_VERSION/build
+	cd opencv-$OPENCV_VERSION/build
+	cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX="$OPENCV_INSTALL_DIR" .. && make -j2 && make install
+# elif [ false ]
+# then
+# 	ls -aR $HOME/.local
+# 	pip install -U --user pyserial
 else
 	# ls -aR $HOME/.local
-	echo 'hello'
+	echo  "Using cached opencv $OPENCV_VERSION install."
 fi
 # # ldconfig
 #
