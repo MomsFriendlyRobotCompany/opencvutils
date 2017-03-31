@@ -4,7 +4,7 @@ __copyright__ = 'Copyright (c) 2016 Kevin Walchko'
 __author__ = 'Kevin J. Walchko'
 
 
-from __future__ import print_function
+# from __future__ import print_function
 
 # import the necessary packages
 from .convenience import translate
@@ -17,7 +17,8 @@ from .imshow import opencv2matplotlib
 from .Camera import Camera
 from .CameraCalibrate import CameraCalibration
 from .meta import find_function
-import contours
+from .contours import sort_contours
+from .contours import label_contours
 from .paths import list_images, list_files
 from .path import url_to_image
 from .object_detection import non_max_suppression
@@ -41,4 +42,4 @@ def is_cv3():
 
 
 if is_cv2():
-	print('WARNING: OpenCV 2.x is detected, this library is designed to work with OpenCV 3.x')
+	print 'WARNING: OpenCV 2.x is detected, this library is designed to work with OpenCV 3.x'
