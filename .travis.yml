@@ -36,7 +36,6 @@ addons:
 
 cache:
     directories:
-        # - $HOME/.local
         - $OPENCV_INSTALL_DIR
     pip: true
 env:
@@ -54,8 +53,7 @@ env:
 install:
     - ./install-opencv.sh
     - pip install -U --user pip setuptools wheel
-    - pip install .
-    # - pip install -U matplotlib nose
+    # - pip install .
 
 
 # command to run tests
