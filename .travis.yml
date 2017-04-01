@@ -57,5 +57,5 @@ install:
 
 
 # command to run tests
-script: nosetests -v -w tests *.py
+script: cd tests && nosetests -v *.py
 # script: true
