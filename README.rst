@@ -14,8 +14,7 @@ OpenCV Utilities
 
 
 This is  a set of OpenCV utilities that should make working with OpenCV a little
-easier. It also has some useful functions for working with Matplotlib and
-Jupyter notebooks.
+easier.
 
 **Original Author:** Adrian Rosebrock
 
@@ -25,7 +24,7 @@ Jupyter notebooks.
 Install
 --------
 
-::
+The preferred way to install is using ``pip``::
 
 	pip install opencvutils
 
