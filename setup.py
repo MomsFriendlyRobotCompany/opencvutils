@@ -37,13 +37,9 @@ setup(
 	# install_requires=['numpy', 'scipy'],
 	# install_requires=['numpy', 'pyyaml'],
 	install_requires=['numpy', 'pyyaml'],
-	# scripts=['bin/range-detector.py'],
 	scripts=['bin/camera_calibrate.py', 'bin/mjpeg_server.py', 'bin/video_capture.py'],
 	license='MIT',
 	cmdclass={
-		# 'test': NoseTestCommand,
-		'publish': PublishCommand,
-		# 'tag': GitTagCommand,
-		# 'clean': CleanCommand
+		'publish': PublishCommand
 	},
 )
