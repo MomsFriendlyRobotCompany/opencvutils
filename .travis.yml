@@ -34,6 +34,7 @@ addons:
             - ffmpeg
             - python-matplotlib
 
+# cache the opencv3 build so we don't have to rebuild it every time
 cache:
     directories:
         - $OPENCV_INSTALL_DIR

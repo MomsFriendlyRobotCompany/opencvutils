@@ -1,8 +1,16 @@
 import cv2
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import time
-from opencvutils import Camera
+from .opencvutils import Camera
 import socket as Socket
+
+from opencvutils import python_ver
+
+if pyton_ver()[0] == 3:
+	from http.server import BaseHTTPRequestHandler, HTTPServer
+else:
+	from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+
+
 # import errno
 
 # threaded version

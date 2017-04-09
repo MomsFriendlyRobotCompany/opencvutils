@@ -1,4 +1,4 @@
-
+from __future__ import print_function
 import numpy as np
 import cv2
 # import glob
@@ -39,11 +39,11 @@ class CameraCalibration(object):
 		# print 'newcameramtx:',self.data['newcameramtx']
 		m = self.data['camera_matrix']
 		k = self.data['dist_coeff']
-		print 'focal length {0:3.1f} {1:3.1f}'.format(m[0][0], m[1][1])
-		print 'image center {0:3.1f} {1:3.1f}'.format(m[0][2], m[1][2])
-		print 'radial distortion {0:3.3f} {1:3.3f}'.format(k[0][0], k[0][1])
-		print 'tangental distortion {0:3.3f} {1:3.3f}'.format(k[0][2], k[0][3])
-		print 'RMS error:', self.data['rms']
+		print('focal length {0:3.1f} {1:3.1f}'.format(m[0][0], m[1][1]))
+		print('image center {0:3.1f} {1:3.1f}'.format(m[0][2], m[1][2]))
+		print('radial distortion {0:3.3f} {1:3.3f}'.format(k[0][0], k[0][1]))
+		print('tangental distortion {0:3.3f} {1:3.3f}'.format(k[0][2], k[0][3]))
+		print('RMS error:', self.data['rms'])
 
 	# Pass a gray scale image and find the markers (i.e., checkerboard, circles)
 	def findMarkers(self, gray, objpoints, imgpoints):
@@ -60,7 +60,7 @@ class CameraCalibration(object):
 
 		# If found, add object points, image points (after refining them)
 		if ret:
-			print '[+] found ', corners.size / 2, 'of', self.marker_size[0]*self.marker_size[1], 'corners'
+			print('[+] found ', corners.size / 2, 'of', self.marker_size[0]*self.marker_size[1], 'corners')
 			term = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_COUNT, 30, 0.1)
 			cv2.cornerSubPix(gray, corners, (5, 5), (-1, -1), term)
 			imgpoints.append(corners.reshape(-1, 2))
@@ -69,7 +69,7 @@ class CameraCalibration(object):
 			# Draw the corners
 			self.draw(gray, corners)
 		else:
-			print '[-] Could not find markers'
+			print('[-] Could not find markers')
 
 		return ret, objpoints, imgpoints
 

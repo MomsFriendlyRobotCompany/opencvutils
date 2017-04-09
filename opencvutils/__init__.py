@@ -1,10 +1,4 @@
-__version__ = '0.8.0'
-__license__ = 'MIT'
-__copyright__ = 'Copyright (c) 2016 Kevin Walchko'
-__author__ = 'Kevin J. Walchko'
-
-
-# import the necessary packages
+from __future__ import print_function
 from .convenience import translate
 from .convenience import rotate
 from .convenience import resize
@@ -22,9 +16,22 @@ from .paths import list_images, list_files
 from .paths import url_to_image
 from .object_detection import non_max_suppression
 import cv2
+import sys
+
+
+__version__ = '0.8.0'
+__license__ = 'MIT'
+__copyright__ = 'Copyright (c) 2016 Kevin Walchko'
+__author__ = 'Kevin J. Walchko'
+
+
+def python_ver():
+	"""Returns a tuple with the python version"""
+	return sys.version_info[:3]
 
 
 def get_opencv_version():
+	"""Returns a tuple with the OpenCV version in it"""
 	return tuple(map(int, cv2.__version__.split('.')))
 
 
@@ -41,4 +48,4 @@ def is_cv3():
 
 
 if is_cv2():
-	print 'WARNING: OpenCV 2.x is detected, this library is designed to work with OpenCV 3.x'
+	print('WARNING: OpenCV 2.x is detected, this library is designed to work with OpenCV 3.x')
