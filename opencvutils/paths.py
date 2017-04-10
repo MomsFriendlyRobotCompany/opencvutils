@@ -1,14 +1,13 @@
 import os
 import numpy as np
 import cv2
-import sys
+# import sys
+from .utils import python_ver
 
-# import any special Python 2.7 packages
-if sys.version_info.major == 2:
+
+if python_ver()[0] == 2:
 	from urllib import urlopen
-
-# import any special Python 3 packages
-elif sys.version_info.major == 3:
+else:
 	from urllib.request import urlopen
 
 

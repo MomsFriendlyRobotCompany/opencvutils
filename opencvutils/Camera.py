@@ -13,7 +13,8 @@ if platform.system().lower() == 'linux' and 'TRAVIS' not in os.environ:
 	import picamera
 	import picamera.array
 else:
-	from .fake_hw import picamera
+	# from .fake_hw import picamera
+	from fake_rpi import picamera
 
 
 class VideoError(Exception):

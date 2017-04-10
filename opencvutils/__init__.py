@@ -4,47 +4,25 @@ from .convenience import rotate
 from .convenience import resize
 from .convenience import skeletonize
 from .convenience import auto_canny
-# from .imshow import imshow
-# from .imshow import opencv2matplotlib
 from .Camera import Camera
 from .Camera import SaveVideo
 from .CameraCalibrate import CameraCalibration
 from .meta import find_function
 from .contours import sort_contours
 from .contours import label_contour
-from .paths import list_images, list_files
+from .paths import list_images
+from .paths import list_files
 from .paths import url_to_image
 from .object_detection import non_max_suppression
-import cv2
-import sys
+from .utils import python_ver
+from .utils import is_cv2
+from .utils import is_cv3
+from .utils import get_opencv_version
 
-
-__version__ = '0.8.0'
+__version__ = '0.9.1'
 __license__ = 'MIT'
 __copyright__ = 'Copyright (c) 2016 Kevin Walchko'
 __author__ = 'Kevin J. Walchko'
-
-
-def python_ver():
-	"""Returns a tuple with the python version"""
-	return sys.version_info[:3]
-
-
-def get_opencv_version():
-	"""Returns a tuple with the OpenCV version in it"""
-	return tuple(map(int, cv2.__version__.split('.')))
-
-
-def is_cv2():
-	# if we are using OpenCV 2.x, then our cv2.__version__ will start
-	# with 2.
-	return True if get_opencv_version()[0] == 2 else False
-
-
-def is_cv3():
-	# if we are using OpenCV 3.X, then our cv2.__version__ will start
-	# with 3.
-	return True if get_opencv_version()[0] == 3 else False
 
 
 if is_cv2():

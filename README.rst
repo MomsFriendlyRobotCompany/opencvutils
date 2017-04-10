@@ -63,6 +63,7 @@ Change Log
 -------------
 
 ========== ======= =============================
+2017-04-09 0.9.0   initial python 3 support
 2017-03-31 0.7.0   refactored and got rid of things I don't need
 2017-01-29 0.6.0   added video capture (video and images) program
 2016-12-30 0.5.3   typo fix
@@ -70,10 +71,8 @@ Change Log
 2016-12-11 0.5.0   published to PyPi
 ========== ======= =============================
 
-License
-----------
-
-**The MIT License (MIT)**
+MIT License
+----------------
 
 Copyright (c) 2016 Kevin J. Walchko
 

@@ -5,7 +5,7 @@ import socket as Socket
 
 from opencvutils import python_ver
 
-if pyton_ver()[0] == 3:
+if python_ver()[0] == 3:
 	from http.server import BaseHTTPRequestHandler, HTTPServer
 else:
 	from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer

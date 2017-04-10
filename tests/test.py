@@ -25,7 +25,7 @@ def test_files():
 	gen = cvu.list_images(path)
 	for i in range(9):
 		im = './cal_images/shot_00{}.png'.format(i)
-		assert gen.next() == im
+		assert next(gen) == im
 
 
 def test_dummy():

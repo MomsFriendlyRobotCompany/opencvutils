@@ -2,6 +2,8 @@
 import numpy as np
 import cv2
 
+# rename affine or imgops?
+
 
 def translate(image, x, y):
 	# define the translation matrix and perform the translation
