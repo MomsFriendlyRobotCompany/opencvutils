@@ -53,7 +53,7 @@ env:
 # install other libraries using pip
 install:
     - ./install-opencv.sh
-    - pip install -U --user pip setuptools wheel
+    - pip install -U --user pip setuptools wheel fake_rpi build_utils
     - pip install --user .
 
 
