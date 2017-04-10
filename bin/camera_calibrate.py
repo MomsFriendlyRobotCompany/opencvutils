@@ -14,7 +14,7 @@
 # A good resource:
 # http://docs.opencv.org/3.1.0/dc/dbb/tutorial_py_calibration.html
 
-
+from __future__ import print_function
 from opencvutils import CameraCalibration
 # import numpy as np
 import cv2
@@ -56,7 +56,7 @@ def main():
 	cal.save_file = args['matrix']
 	cal.marker_size = (args['target_size'][0], args['target_size'][1])
 
-	print 'Marker size:', cal.marker_size
+	print('Marker size:', cal.marker_size)
 
 	if args['target'] == 'chessboard': cal.marker_checkerboard = True
 	else: cal.marker_checkerboard = False

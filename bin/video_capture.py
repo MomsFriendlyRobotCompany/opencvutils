@@ -7,7 +7,7 @@
 #
 #
 #
-
+from __future__ import print_function
 import cv2
 import yaml
 import argparse
@@ -47,7 +47,7 @@ if __name__ == '__main__':
 	# image size
 	if args['size'] is not None:
 		size = (args['size'][0], args['size'][1])
-		print 'camera capturing images at size: {}'.format(size)
+		print('camera capturing images at size: {}'.format(size))
 	else:
 		size = (640, 480)
 
@@ -57,7 +57,7 @@ if __name__ == '__main__':
 		d = read(cam_cal)
 		m = d['camera_matrix']
 		k = d['dist_coeff']
-		print 'Using supplied camera calibration matrix: {}'.format(cam_cal)
+		print('Using supplied camera calibration matrix: {}'.format(cam_cal))
 
 	# print size
 	# print cam_cal
@@ -68,11 +68,11 @@ if __name__ == '__main__':
 	cap = Camera()
 	cap.init(win=size, cameraNumber=source)
 
-	print '---------------------------------'
-	print ' ESC/q to quit'
-	print ' v to start/stop video capture'
-	print ' f to grab a frame'
-	print '---------------------------------'
+	print('---------------------------------')
+	print(' ESC/q to quit')
+	print(' v to start/stop video capture')
+	print(' f to grab a frame')
+	print('---------------------------------')
 
 	shot_idx = 0
 	video_idx = 0
@@ -104,18 +104,18 @@ if __name__ == '__main__':
 				vfn = '{0!s}_{1:d}.mp4'.format(filename, video_idx)
 				h, w = img.shape[:2]
 				save.start(vfn, (w, h), FPS)
-				print '[+] start capture', vfn
+				print('[+] start capture', vfn)
 			else:
 				save.release()
 				video_idx += 1
-				print '[-] stop capture', vfn
+				print('[-] stop capture', vfn)
 			video = not video
 
 		# Capture a single frame
 		elif ch == ord('f'):
 			fn = '{0!s}/shot_{1:03d}.png'.format(shotdir, shot_idx)
 			cv2.imwrite(fn, img)
-			print '[*] saved image to', fn
+			print('[*] saved image to', fn)
 			shot_idx += 1
 
 		if video:

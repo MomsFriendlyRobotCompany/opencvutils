@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-
+from __future__ import print_function
 import cv2
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import time
@@ -48,7 +48,7 @@ class mjpgServer(BaseHTTPRequestHandler):
 
 	def getImage(self):
 		if self.cam:
-			print 'cam'
+			print('cam')
 			return self.cam.read()
 
 		else:
@@ -65,7 +65,7 @@ class mjpgServer(BaseHTTPRequestHandler):
 	# 	s.end_headers()
 
 	def do_GET(self):
-		print 'connection from:', self.address_string()
+		print('connection from:', self.address_string())
 
 		if self.ip is None or self.hostname is None:
 			self.hostname = Socket.gethostname()
@@ -118,7 +118,7 @@ class mjpgServer(BaseHTTPRequestHandler):
 			self.wfile.write('</body></html>')
 
 		else:
-			print 'error', self.path
+			print('error', self.path)
 			self.send_response(404)
 			self.send_header('Content-type', 'text/html')
 			self.end_headers()
@@ -150,11 +150,11 @@ def main():
 		else:
 			mjpgServer.cam = mjpgServer.setUpCamera(pi=True, win=win)
 		server = HTTPServer(('0.0.0.0', args['port']), mjpgServer)
-		print "server started on {}:{}".format(Socket.gethostname(), args['port'])
+		print("server started on {}:{}".format(Socket.gethostname(), args['port']))
 		server.serve_forever()
 
 	except KeyboardInterrupt:
-		print 'KeyboardInterrupt'
+		print('KeyboardInterrupt')
 
 	server.socket.close()
 
