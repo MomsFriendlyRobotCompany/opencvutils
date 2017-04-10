@@ -1,3 +1,4 @@
+from __future__ import print_function
 import cv2
 import time
 from .opencvutils import Camera
@@ -6,9 +7,9 @@ import socket as Socket
 from opencvutils import python_ver
 
 if python_ver()[0] == 3:
-	from http.server import BaseHTTPRequestHandler, HTTPServer
+	from http.server import BaseHTTPRequestHandler
 else:
-	from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+	from BaseHTTPServer import BaseHTTPRequestHandler
 
 
 # import errno
@@ -51,7 +52,7 @@ class mjpgServer(BaseHTTPRequestHandler):
 
 	def getImage(self):
 		if self.cam:
-			print 'cam'
+			print('cam')
 			return self.cam.read()
 
 		else:
@@ -68,7 +69,7 @@ class mjpgServer(BaseHTTPRequestHandler):
 	# 	s.end_headers()
 
 	def do_GET(self):
-		print 'connection from:', self.address_string()
+		print('connection from:', self.address_string())
 
 		if self.ip is None or self.hostname is None:
 			self.hostname = Socket.gethostname()
@@ -121,7 +122,7 @@ class mjpgServer(BaseHTTPRequestHandler):
 			self.wfile.write('</body></html>')
 
 		else:
-			print 'error', self.path
+			print('error', self.path)
 			self.send_response(404)
 			self.send_header('Content-type', 'text/html')
 			self.end_headers()
