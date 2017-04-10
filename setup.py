@@ -18,6 +18,14 @@ except:
 	os.system('pip install build_utils')
 	os.system('pip3 install build_utils')
 
+	from build_utils import BuildCommand
+	from build_utils import PublishCommand
+	from build_utils import BinaryDistribution
+
+	BuildCommand.pkg = PACKAGE_NAME
+	PublishCommand.pkg = PACKAGE_NAME
+	PublishCommand.version = VERSION
+
 setup(
 	name=PACKAGE_NAME,
 	packages=[PACKAGE_NAME],
