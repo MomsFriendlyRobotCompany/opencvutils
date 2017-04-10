@@ -6,8 +6,10 @@ pylint:
     disable:
         - logging-too-many-args
         - too-many-function-args
+        - Too-many-locals
         - unused-import
         - pointless-string-statement
+        # - R0914
 
 ignore-paths:
     - docs

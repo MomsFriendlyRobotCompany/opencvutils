@@ -110,7 +110,7 @@ class CameraCalibration(object):
 
 		for fname in images:
 			gray = cv2.imread(fname, 0)
-			ret, objpoints, imgpoints = self.findMarkers(gray, objpoints, imgpoints)
+			_, objpoints, imgpoints = self.findMarkers(gray, objpoints, imgpoints)
 			h, w = gray.shape[:2]
 			# print(fname,h,w)
 
@@ -122,6 +122,6 @@ class CameraCalibration(object):
 		# alpha=0: returns undistored image with minimum unwanted pixels (image pixels at corners/edges could be missing)
 		# alpha=1: retains all image pixels but there will be black to make up for warped image correction
 		# returns new cal matrix and an ROI to crop out the black edges
-		newcameramtx, roi = cv2.getOptimalNewCameraMatrix(mtx, dist, (w, h), alpha)
+		newcameramtx, _ = cv2.getOptimalNewCameraMatrix(mtx, dist, (w, h), alpha)
 		self.data = {'camera_matrix': mtx, 'dist_coeff': dist, 'newcameramtx': newcameramtx, 'rms': rms, 'rvecs': rvecs, 'tvecs': tvecs}
 		return self.data

@@ -146,9 +146,9 @@ def main():
 		win = args['size']
 		if args['type'] is 'cv':
 			cv = args['camera']
-			mjpgServer.cam = mjpgServer.setUpCamera(cv=cv, win=win)
+			mjpgServer.setUpCamera(cv=cv, win=win)
 		else:
-			mjpgServer.cam = mjpgServer.setUpCamera(pi=True, win=win)
+			mjpgServer.setUpCamera(pi=True, win=win)
 		server = HTTPServer(('0.0.0.0', args['port']), mjpgServer)
 		print("server started on {}:{}".format(Socket.gethostname(), args['port']))
 		server.serve_forever()
