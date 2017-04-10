@@ -53,8 +53,8 @@ env:
 # install other libraries using pip
 install:
     - ./install-opencv.sh
-    - pip install -U --user pip setuptools wheel
-    # - pip install .
+    - pip install -U pip setuptools wheel
+    - pip install -e .
 
 
 # command to run tests
