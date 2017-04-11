@@ -56,7 +56,7 @@ install:
     - pip install -U pip setuptools wheel
     - pip install fake_rpi build_utils
     - pip list
-    - pip install -e .
+    - pip install .
 
 
 # command to run tests
