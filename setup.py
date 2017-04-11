@@ -5,26 +5,26 @@ from opencvutils import __version__ as VERSION
 
 PACKAGE_NAME = 'opencvutils'
 
-try:
-	from build_utils import BuildCommand
-	from build_utils import PublishCommand
-	from build_utils import BinaryDistribution
+# try:
+from build_utils import BuildCommand
+from build_utils import PublishCommand
+from build_utils import BinaryDistribution
 
-	BuildCommand.pkg = PACKAGE_NAME
-	PublishCommand.pkg = PACKAGE_NAME
-	PublishCommand.version = VERSION
-except:
-	import os
-	os.system('pip install build_utils')
-	os.system('pip3 install build_utils')
-
-	from build_utils import BuildCommand
-	from build_utils import PublishCommand
-	from build_utils import BinaryDistribution
-
-	BuildCommand.pkg = PACKAGE_NAME
-	PublishCommand.pkg = PACKAGE_NAME
-	PublishCommand.version = VERSION
+BuildCommand.pkg = PACKAGE_NAME
+PublishCommand.pkg = PACKAGE_NAME
+PublishCommand.version = VERSION
+# except:
+# 	import os
+# 	os.system('pip install build_utils')
+# 	os.system('pip3 install build_utils')
+#
+# 	from build_utils import BuildCommand
+# 	from build_utils import PublishCommand
+# 	from build_utils import BinaryDistribution
+#
+# 	BuildCommand.pkg = PACKAGE_NAME
+# 	PublishCommand.pkg = PACKAGE_NAME
+# 	PublishCommand.version = VERSION
 
 setup(
 	name=PACKAGE_NAME,
