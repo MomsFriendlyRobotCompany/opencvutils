@@ -5,7 +5,6 @@ from opencvutils import __version__ as VERSION
 
 PACKAGE_NAME = 'opencvutils'
 
-# try:
 from build_utils import BuildCommand
 from build_utils import PublishCommand
 from build_utils import BinaryDistribution
@@ -13,18 +12,7 @@ from build_utils import BinaryDistribution
 BuildCommand.pkg = PACKAGE_NAME
 PublishCommand.pkg = PACKAGE_NAME
 PublishCommand.version = VERSION
-# except:
-# 	import os
-# 	os.system('pip install build_utils')
-# 	os.system('pip3 install build_utils')
-#
-# 	from build_utils import BuildCommand
-# 	from build_utils import PublishCommand
-# 	from build_utils import BinaryDistribution
-#
-# 	BuildCommand.pkg = PACKAGE_NAME
-# 	PublishCommand.pkg = PACKAGE_NAME
-# 	PublishCommand.version = VERSION
+
 
 setup(
 	name=PACKAGE_NAME,
@@ -47,9 +35,6 @@ setup(
 		'Topic :: Software Development :: Libraries :: Python Modules',
 		'Topic :: Software Development :: Libraries :: Application Frameworks'
 	],
-	# install_requires=['matplotlib', 'numpy', 'scipy'],
-	# install_requires=['numpy', 'scipy'],
-	# install_requires=['numpy', 'pyyaml'],
 	install_requires=['numpy', 'pyyaml', 'build_utils', 'fake_rpi'],
 	scripts=['bin/camera_calibrate.py', 'bin/mjpeg_server.py', 'bin/video_capture.py'],
 	license='MIT',
