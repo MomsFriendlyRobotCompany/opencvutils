@@ -19,7 +19,7 @@ from .utils import is_cv2
 from .utils import is_cv3
 from .utils import get_opencv_version
 
-__version__ = '0.9.1'
+from .version import __version__
 __license__ = 'MIT'
 __copyright__ = 'Copyright (c) 2016 Kevin Walchko'
 __author__ = 'Kevin J. Walchko'

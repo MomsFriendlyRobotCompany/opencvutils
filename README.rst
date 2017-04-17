@@ -3,6 +3,7 @@ OpenCV Utilities
 
 .. image:: https://travis-ci.org/walchko/opencvutils.svg?branch=master
 	:target: https://travis-ci.org/walchko/opencvutils
+	:alt: Travis-ci
 .. image:: https://landscape.io/github/walchko/opencvutils/master/landscape.svg?style=flat
    :target: https://landscape.io/github/walchko/opencvutils/master
    :alt: Code Health
