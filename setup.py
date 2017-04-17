@@ -33,9 +33,6 @@ setup(
 		'Topic :: Software Development :: Libraries :: Python Modules',
 		'Topic :: Software Development :: Libraries :: Application Frameworks'
 	],
-	# install_requires=['matplotlib', 'numpy', 'scipy'],
-	# install_requires=['numpy', 'scipy'],
-	# install_requires=['numpy', 'pyyaml'],
 	install_requires=['numpy', 'pyyaml', 'build_utils', 'fake_rpi'],
 	scripts=['bin/camera_calibrate.py', 'bin/mjpeg_server.py', 'bin/video_capture.py'],
 	license='MIT',
