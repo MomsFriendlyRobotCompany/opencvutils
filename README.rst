@@ -1,12 +1,9 @@
 OpenCV Utilities
 ===================
 
-.. image:: https://travis-ci.org/walchko/opencvutils.svg?branch=master
-	:target: https://travis-ci.org/walchko/opencvutils
+.. image:: https://travis-ci.org/MomsFriendlyRobotCompany/opencvutils.svg?branch=master
+	:target: https://travis-ci.org/MomsFriendlyRobotCompany/opencvutils
 	:alt: Travis-ci
-.. image:: https://landscape.io/github/walchko/opencvutils/master/landscape.svg?style=flat
-   :target: https://landscape.io/github/walchko/opencvutils/master
-   :alt: Code Health
 .. image:: https://img.shields.io/pypi/v/opencvutils.svg
 	:target: https://pypi.python.org/pypi/opencvutils/
 	:alt: Latest Version
