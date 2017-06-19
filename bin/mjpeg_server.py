@@ -8,21 +8,30 @@ import argparse
 from opencvutils import Camera
 import socket as Socket
 from opencvutils import __version__ as VERSION
-# import errno
 import os
 import re
+import socket
+import platform
 
 # I use to do 0.0.0.0 to bind to all interfaces, but that seemed to be really
 # slow. feeding it the correct ip address seems to greatly speed things up.
 
-
+os_name = platform.system()
 camera = None
 
 
 def getIP(iface):
-	search_str = 'ip addr show wlan0'.format(iface)
-	ipv4 = re.search(re.compile(r'(?<=inet )(.*)(?=\/)', re.M), os.popen(search_str).read()).groups()[0]
-	ipv6 = re.search(re.compile(r'(?<=inet6 )(.*)(?=\/)', re.M), os.popen(search_str).read()).groups()[0]
+	if os_name == 'Darwin':
+		ipv4 = socket.gethostbyname(socket.gethostname())
+		ipv6 = None
+	elif os_name == 'Linux':
+		search_str = 'ip addr show wlan0'.format(iface)
+		ipv4 = re.search(re.compile(r'(?<=inet )(.*)(?=\/)', re.M), os.popen(search_str).read()).groups()[0]
+		ipv6 = re.search(re.compile(r'(?<=inet6 )(.*)(?=\/)', re.M), os.popen(search_str).read()).groups()[0]
+	else:
+		ipv4 = socket.gethostbyname(socket.gethostname())
+		ipv6 = None
+
 	return (ipv4, ipv6)
 
 
@@ -69,7 +78,6 @@ class mjpgServer(BaseHTTPRequestHandler):
 
 			while True:
 				if camera:
-					# print('cam')
 					ret, img = camera.read()
 
 				else:
@@ -88,7 +96,6 @@ class mjpgServer(BaseHTTPRequestHandler):
 				self.send_header('Content-length', str(jpg.size))
 				self.end_headers()
 				self.wfile.write(jpg.tostring())
-				# time.sleep(0.05)
 
 		elif self.path == '/':
 			# hn = self.server.server_address[0]
@@ -103,10 +110,6 @@ class mjpgServer(BaseHTTPRequestHandler):
 			self.wfile.write('<h1>{0!s}[{1!s}]:{2!s}</h1>'.format(hostname, ip, port))
 			self.wfile.write('<img src="http://{}:{}/mjpg"/>'.format(ip, port))
 			self.wfile.write('<p>{0!s}</p>'.format((self.version_string())))
-			# self.wfile.write('<p>The mjpg stream can be accessed directly at:<ul>')
-			# self.wfile.write('<li>http://{0!s}:{1!s}/mjpg</li>'.format(ip, port))
-			# self.wfile.write('<li><a href="http://{0!s}:{1!s}/mjpg"/>http://{0!s}:{1!s}/mjpg</a></li>'.format(hostname, port))
-			# self.wfile.write('</p></ul>')
 			self.wfile.write('<p>This only handles one connection at a time</p>')
 			self.wfile.write('</body></html>')
 
@@ -137,14 +140,16 @@ def main():
 
 	try:
 		win = args['size']
-		if args['type'] is 'cv':
+		if args['type'] == 'cv':
+			print('Setting up an OpenCV camera')
 			cv = args['camera']
 			setUpCameraCV(cv=cv, win=win)
 		else:
+			print('Setting up a Raspberry Pi camera')
 			setUpCameraPi(win=win)
-		# server = HTTPServer(('0.0.0.0', args['port']), mjpgServer)
+
 		ipv4, ipv6 = getIP('wlan0')
-		print('wlan0:', ipv4)
+
 		mjpgServer.ip = ipv4
 		mjpgServer.hostname = Socket.gethostname()
 		server = HTTPServer((ipv4, args['port']), mjpgServer)
