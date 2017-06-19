@@ -16,7 +16,7 @@ setup(
 	name=PACKAGE_NAME,
 	packages=[PACKAGE_NAME],
 	version=VERSION,
-	description='Simple OpenCV 3 image processing functions',
+	description='Simple OpenCV 3.x image processing functions',
 	author='Kevin J. Walchko',
 	long_description=open('README.rst').read(),
 	author_email='kevin.walchko@outlook.com',
@@ -34,7 +34,11 @@ setup(
 		'Topic :: Software Development :: Libraries :: Application Frameworks'
 	],
 	install_requires=['numpy', 'pyyaml', 'build_utils', 'fake_rpi'],
-	scripts=['bin/camera_calibrate.py', 'bin/mjpeg_server.py', 'bin/video_capture.py'],
+	scripts=[
+		'bin/camera_calibrate.py',
+		'bin/mjpeg_server.py',
+		'bin/video_capture.py'
+	],
 	license='MIT',
 	cmdclass={
 		'make': BuildCommand,

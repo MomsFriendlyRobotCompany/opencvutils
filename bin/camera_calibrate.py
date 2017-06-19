@@ -58,8 +58,10 @@ def main():
 
 	print('Marker size:', cal.marker_size)
 
-	if args['target'] == 'chessboard': cal.marker_checkerboard = True
-	else: cal.marker_checkerboard = False
+	if args['target'] == 'chessboard':
+		cal.marker_checkerboard = True
+	else:
+		cal.marker_checkerboard = False
 	cal.calibrate(images)
 
 	cal.printMat()

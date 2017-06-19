@@ -30,12 +30,17 @@ The preferred way to install is using ``pip``::
 Other Libraries
 ~~~~~~~~~~~~~~~~~
 
-For ``scipy`` on the RPi also do::
+You will need both ``numpy`` and ``opencv3`` for this to work. Use your os package
+manager to install. Unfortunately this is not fast, ``numpy`` install involves
+compiling things, so go grab a coffee or something while you wait.
 
-	sudo apt-get install libopenblas-dev libatlas-dev libblas-dev liblapack-dev gfortran
+for macOS::
 
-Unfortunately this is not fast, ``numpy`` install involves compiling things, so
-go grab a coffee or something while you wait.
+	pip install numpy
+	brew install opencv3 --with-ffmpeg --with-tbb --without-numpy
+	brew link -f opencv3
+
+there are other options that would work too.
 
 Development
 ------------
@@ -52,11 +57,32 @@ Documentation
 See the `Jupyter Notebooks <https://github.com/walchko/opencvutils/tree/master/docs>`_
 for examples of how to use this library.
 
-ToDo
------
+Scripts:
 
-* histogram matching
-* document everything
+.. code-block:: bash
+
+	pi@raspberry ~ $ mjpeg_server.py -h
+		usage: mjpeg_server.py [-h] [-v] [-p PORT] [-c CAMERA] [-t TYPE]
+												 [-s SIZE SIZE]
+
+		A simple mjpeg server Example: mjpeg-server -p 8080 --camera 4
+
+		optional arguments:
+		-h, --help            show this help message and exit
+		-v, --version         show program's version number and exit
+		-p PORT, --port PORT  mjpeg publisher port, default is 9000
+		-c CAMERA, --camera CAMERA
+													set opencv camera number, ex. -c 1
+		-t TYPE, --type TYPE  set camera type, either pi or cv, ex. -t pi
+		-s SIZE SIZE, --size SIZE SIZE
+													set size
+Then you could do::
+
+	pi@raspberry ~ $ mjpeg_server.py -t pi -s 640 480
+
+now navigate to your computer (hostname:9000) and you should see the mjpg stream.
+Note, if you changed the port number with the ``-p`` arg, then use that port
+number.
 
 Change Log
 -------------

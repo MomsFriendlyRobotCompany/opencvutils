@@ -9,12 +9,33 @@ from opencvutils import Camera
 import socket as Socket
 from opencvutils import __version__ as VERSION
 # import errno
+import os
+import re
 
-# threaded version
-# http://stackoverflow.com/questions/12650238/processing-simultaneous-asynchronous-requests-with-python-basehttpserver
+# I use to do 0.0.0.0 to bind to all interfaces, but that seemed to be really
+# slow. feeding it the correct ip address seems to greatly speed things up.
 
-# not sure flask is any better:
-# https://blog.miguelgrinberg.com/post/video-streaming-with-flask
+
+camera = None
+
+
+def getIP(iface):
+	search_str = 'ip addr show wlan0'.format(iface)
+	ipv4 = re.search(re.compile(r'(?<=inet )(.*)(?=\/)', re.M), os.popen(search_str).read()).groups()[0]
+	ipv6 = re.search(re.compile(r'(?<=inet6 )(.*)(?=\/)', re.M), os.popen(search_str).read()).groups()[0]
+	return (ipv4, ipv6)
+
+
+def setUpCameraPi(win=(320, 240)):
+	global camera
+	camera = Camera('pi')
+	camera.init(win=win)
+
+
+def setUpCameraCV(win=(320, 240), cv=0):
+	global camera
+	camera = Camera('cv')
+	camera.init(cameraNumber=cv, win=win)
 
 
 def compress(orig, comp):
@@ -27,49 +48,16 @@ class mjpgServer(BaseHTTPRequestHandler):
 	or republishes images from another pygecko process.
 	"""
 
-	cam = None
 	ip = None
 	hostname = None
 
-	def setUpCamera(self, cv=None, pi=None, win=(320, 240)):
-		"""
-		cv - camera number, usually 0
-		pi - set to True
-		"""
-		if pi:
-			self.cam = Camera('pi')
-			self.cam.init(win=win)
-		elif cv:
-			self.cam = Camera('cv')
-			self.cam.init(cameraNumber=cv, win=win)
-
-		else:
-			raise Exception('Error, you must specify "cv" or "pi" for camera type')
-
-	def getImage(self):
-		if self.cam:
-			print('cam')
-			return self.cam.read()
-
-		else:
-			if not self.cam:
-				raise Exception('Error, you must setup camera first')
-			print('You should call setUpCamera() first ... let us try now and assume "cv=0"')
-			self.setUpCamera(cv=0)
-			return False, None
-
-	# def do_HEAD(s):
-	# 	print 'do_HEAD'
-	# 	s.send_response(200)
-	# 	s.send_header("Content-type", "text/html")
-	# 	s.end_headers()
-
 	def do_GET(self):
+		global camera
 		print('connection from:', self.address_string())
 
 		if self.ip is None or self.hostname is None:
+			self.ip, _ = getIP('wlan0')
 			self.hostname = Socket.gethostname()
-			self.ip = Socket.gethostbyname(Socket.gethostname())
 
 		if self.path == '/mjpg':
 			self.send_response(200)
@@ -80,10 +68,15 @@ class mjpgServer(BaseHTTPRequestHandler):
 			self.end_headers()
 
 			while True:
-				# ret, img = capture.read()
-				ret, img = self.getImage()
+				if camera:
+					# print('cam')
+					ret, img = camera.read()
+
+				else:
+					raise Exception('Error, camera not setup')
+
 				if not ret:
-					# print 'crap'
+					print('no image from camera')
 					time.sleep(1)
 					continue
 
@@ -95,13 +88,13 @@ class mjpgServer(BaseHTTPRequestHandler):
 				self.send_header('Content-length', str(jpg.size))
 				self.end_headers()
 				self.wfile.write(jpg.tostring())
-				time.sleep(0.05)
+				# time.sleep(0.05)
 
 		elif self.path == '/':
 			# hn = self.server.server_address[0]
 			port = self.server.server_address[1]
 			ip = self.ip
-			hostname = self.ip
+			hostname = self.hostname
 
 			self.send_response(200)
 			self.send_header('Content-type', 'text/html')
@@ -110,10 +103,10 @@ class mjpgServer(BaseHTTPRequestHandler):
 			self.wfile.write('<h1>{0!s}[{1!s}]:{2!s}</h1>'.format(hostname, ip, port))
 			self.wfile.write('<img src="http://{}:{}/mjpg"/>'.format(ip, port))
 			self.wfile.write('<p>{0!s}</p>'.format((self.version_string())))
-			self.wfile.write('<p>The mjpg stream can be accessed directly at:<ul>')
-			self.wfile.write('<li><a href="http://{0!s}:{1!s}/mjpg"/>http://{0!s}:{1!s}/mjpg</a></li>'.format(ip, port))
-			self.wfile.write('<li><a href="http://{0!s}:{1!s}/mjpg"/>http://{0!s}:{1!s}/mjpg</a></li>'.format(hostname, port))
-			self.wfile.write('</p></ul>')
+			# self.wfile.write('<p>The mjpg stream can be accessed directly at:<ul>')
+			# self.wfile.write('<li>http://{0!s}:{1!s}/mjpg</li>'.format(ip, port))
+			# self.wfile.write('<li><a href="http://{0!s}:{1!s}/mjpg"/>http://{0!s}:{1!s}/mjpg</a></li>'.format(hostname, port))
+			# self.wfile.write('</p></ul>')
 			self.wfile.write('<p>This only handles one connection at a time</p>')
 			self.wfile.write('</body></html>')
 
@@ -146,10 +139,15 @@ def main():
 		win = args['size']
 		if args['type'] is 'cv':
 			cv = args['camera']
-			mjpgServer.setUpCamera(cv=cv, win=win)
+			setUpCameraCV(cv=cv, win=win)
 		else:
-			mjpgServer.setUpCamera(pi=True, win=win)
-		server = HTTPServer(('0.0.0.0', args['port']), mjpgServer)
+			setUpCameraPi(win=win)
+		# server = HTTPServer(('0.0.0.0', args['port']), mjpgServer)
+		ipv4, ipv6 = getIP('wlan0')
+		print('wlan0:', ipv4)
+		mjpgServer.ip = ipv4
+		mjpgServer.hostname = Socket.gethostname()
+		server = HTTPServer((ipv4, args['port']), mjpgServer)
 		print("server started on {}:{}".format(Socket.gethostname(), args['port']))
 		server.serve_forever()
 
