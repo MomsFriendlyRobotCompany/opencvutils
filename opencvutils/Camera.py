@@ -24,15 +24,26 @@ class VideoError(Exception):
 class SaveVideo(object):
 	"""
 	Simple class to save frames to video (mp4v)
+
+	macOS: avc1
+	windows: h264?
 	"""
+
 	def __init__(self):
 		self.out = None
+		self.encoder('avc1')
 
-	def start(self, filename, image_size, fps=30):
-		# mpg4 = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')  # faster?
-		mpg4 = cv2.VideoWriter_fourcc('x', '2', '6', '4')  # better quality?
+	def open(self, filename, width, height, fps=30):
 		self.out = cv2.VideoWriter()
-		self.out.open(filename, mpg4, fps, image_size)
+		self.out.open(filename, self.mpg4, fps, (width,height))
+
+	def encoder(self, fourcc):
+		try:
+			self.mpg4 = cv2.VideoWriter_fourcc(*fourcc)
+		except Exception as err:
+			print(err)
+			print('Please select another encoder for your platform')
+			raise
 
 	def __del__(self):
 		self.release()

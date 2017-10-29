@@ -15,6 +15,9 @@ class CameraCalibration(object):
 	def __init__(self, show_markers=True):
 		self.show_markers = show_markers
 
+	def __del__(self):
+		cv2.destroyAllWindows()
+
 	# # write camera calibration file out
 	def save(self, save_file):
 		fd = open(save_file, "w")

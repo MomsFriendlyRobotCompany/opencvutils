@@ -55,9 +55,36 @@ Documentation
 ---------------
 
 See the `Jupyter Notebooks <https://github.com/walchko/opencvutils/tree/master/docs>`_
-for examples of how to use this library.
+for examples of how to use this library. It contains a lot of common image manipulations.
 
-Scripts:
+Video
+~~~~~~~
+
+You can make a video like this:
+
+.. code-block:: python
+
+	import cv2
+	from opencvutils.Camera import SaveVideo
+
+	shape = (240,320)  # rows (height), cols (width)
+	sv = SaveVideo()
+
+	# you can change the default encoder using a four_cc string
+	# sv.encoder('H264')
+	# sv.encoder('MP4V')
+	# sv.encoder('x264')
+
+	sv.open(filename, shape[1], shape[0])  # order is backwards from opencv!!!!
+
+	for i in range(100):
+		ret, img = camera.read()  # grab image
+		sv.write(img)
+
+	sv.release()
+
+Scripts
+~~~~~~~~~
 
 .. code-block:: bash
 
@@ -88,6 +115,7 @@ Change Log
 -------------
 
 ========== ======= =============================
+2017-10-29 0.9.3   bug fixes
 2017-04-09 0.9.0   initial python 3 support
 2017-03-31 0.7.0   refactored and got rid of things I don't need
 2017-01-29 0.6.0   added video capture (video and images) program
