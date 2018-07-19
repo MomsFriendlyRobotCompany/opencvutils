@@ -13,6 +13,7 @@ PACKAGE_NAME = 'opencvutils'
 BuildCommand.pkg = PACKAGE_NAME
 PublishCommand.pkg = PACKAGE_NAME
 PublishCommand.version = VERSION
+SetGitTag.version = VERSION
 
 
 setup(
