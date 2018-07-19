@@ -17,6 +17,14 @@ def test_checkerboard_calibrate():
     else:
         marker = (7,5,)
         imgs = cal.getImages('./cal_images2/*.png')
+
+    if True:
+        imgs2 = []
+        for im in imgs:
+            sim = cv2.pyrDown(im)
+            imgs2.append(sim)
+        imgs = imgs2
+    
     cal.marker_checkerboard = True
     cal.save_file = 'calibration.npy'
     mx = cal.calibrate(imgs, marker_size=marker)
