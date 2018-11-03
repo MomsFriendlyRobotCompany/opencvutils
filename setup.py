@@ -25,7 +25,7 @@ setup(
     long_description=open('readme.md').read(),
     long_description_content_type='text/markdown',
     author_email='kevin.walchko@outlook.com',
-    url='https://github.com/walchko/{}'.format(PACKAGE_NAME),
+    url='https://github.com/MomsFriendlyRobotCompany/{}'.format(PACKAGE_NAME),
     keywords=['computer vision', 'image processing', 'opencv'],
     classifiers=[
         'Development Status :: 4 - Beta',
