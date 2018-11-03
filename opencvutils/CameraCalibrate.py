@@ -3,6 +3,7 @@ import numpy as np
 import cv2
 from glob import glob
 import yaml
+import json
 
 
 class CameraCalibration(object):
@@ -20,23 +21,15 @@ class CameraCalibration(object):
     def __del__(self):
         pass
 
-    # # write camera calibration file out
-    def save(self, save_file, json=False):
-        if json:
-            with open(self.save_file, 'w') as f:
-                json.dump(self.data, f)
-        else:
-            with open(save_file, "w") as f:
-                yaml.dump(self.data, f)
-
+    # write camera calibration file out
+    def save(self, save_file, handle=yaml):
+        with open(save_file, 'w') as f:
+            handle.dump(self.data, f)
+                
     # read camera calibration file in
-    def read(self, matrix_name, json=False):
-        if json:
-            with open(matrix_name, 'r') as f:
-                self.data = json.load(f)
-        else:
-            with open(matrix_name, "r") as f:
-                self.data = yaml.load(f)
+    def read(self, matrix_name, handle=yaml):
+        with open(matrix_name, 'r') as f:
+            self.data = handle.load(f)
         return self.data
 
     # print the estimated camera parameters
